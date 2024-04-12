@@ -1,0 +1,168 @@
+1//
+#include<iostream>
+using namespace std;
+int main(){
+cout<<"Nhap m,n, cho ma tran A(m x n):";
+int m,n;
+cin>>m>>n;
+//Khoi tao (nhap) mang m x n
+int a[m][n];
+for(int i=0;i<m;i++)
+for(int j=0;j<n;j++){
+cout<<"Nhap A["<<i<<"]["<<j<<"]:";
+cin>>a[i][j];
+}
+//Thuc hien chuyen vi
+int b[n][m];
+for(int i=0;i<n;i++)
+for(int j=0;j<m;j++){
+b[i][j]=a[j][i];
+}
+//In mang ra man hinh
+cout<<"Ma tran ban dau:\n";
+for(int i=0;i<m;i++){
+for(int j=0;j<n;j++){
+cout<<a[i][j]<<" ";
+}
+cout<<endl;
+}
+cout<<"Ma tran chuyen vi:\n";
+for(int i=0;i<n;i++){
+for(int j=0;j<m;j++){
+cout<<b[i][j]<<" ";
+}
+cout<<endl;
+}
+return 0;
+}
+
+2//
+#include<iostream>
+#include <stdlib.h>
+using namespace std;
+int main(){
+cout<<"Nhap m,n,p cho ma tran A(m x n), B(n x p):";
+int m,n,p;
+cin>>m>>n>>p;
+srand(time(NULL));
+//Khoi tao mang A (m x n), B(n x p) phan tu nguyen ngau nhien
+0~4
+int a[m][n];
+for(int i=0;i<m;i++)
+for(int j=0;j<n;j++){
+a[i][j]=rand()%5;
+}
+int b[n][p];
+for(int i=0;i<n;i++)
+for(int j=0;j<p;j++){
+b[i][j]=rand()%5;
+}
+//Thuc hien nhan ma tran
+int c[m][p];
+for(int i=0;i<m;i++)
+for(int j=0;j<p ;j++){
+int total=0;
+for(int k=0;k<n;k++)
+total+=a[i][k]*b[k][j];
+c[i][j]=total;
+}
+//In mang ra man hinh
+cout<<"Ma tran A (m x n) ban dau:\n";
+for(int i=0;i<m;i++){
+for(int j=0;j<n;j++){
+cout<<a[i][j]<<" ";
+}
+cout<<endl;
+}
+cout<<"Ma tran B (n x p) ban dau:\n";
+for(int i=0;i<n;i++){
+for(int j=0;j<p;j++){
+cout<<b[i][j]<<" ";
+}
+cout<<endl;
+}
+cout<<"A x B = C (n x p):\n";
+for(int i=0;i<m;i++){
+for(int j=0;j<p;j++){
+cout<<c[i][j]<<" ";
+}
+cout<<endl;
+}
+return 0;
+}
+
+3//
+#include <iostream> // Khong dung thu vien string
+using namespace std;
+void tim_ky_tu() {
+char s[100];
+int length = 0;
+do {
+cout << "Nhap vao mot chuoi: ";
+cin.getline(s, 100);
+while (s[length] |= '\0')length++;
+length--;
+} while (length == 0);
+int solan;
+do {
+cout << "Nhap so lan xuat hien muon tim: ";
+cin >> solan;
+} while (solan > length || solan < 1);
+int dem;
+char ky_tu;
+bool tim_thay = false;
+for (int i = 0; i < length; i++) {
+dem = 1;
+if (s[i] == '\0')
+continue;
+ky_tu = s[i];
+for (int j = 0; j < length; j++) {
+if (s[j] == s[i] && i != j) {
+dem++;
+s[j] = '\0';
+}
+}
+if (dem == solan) {
+cout << "Ky tu xuat hien " << solan << " lan la: " <<
+ky_tu << endl;
+tim_thay = true;
+}
+}
+if (!tim_thay)
+cout << "!";
+}
+
+4//
+#include <iostream>
+using namespace std;
+void xuat_hien() {
+char s1[100],s2[100];//s1: chuoi hien tai, s2: chuoi con
+cout<<"Nhap vao mot chuoi 1:";
+cin.getline(s1,100);
+cout<<"Nhap vao mot chuoi 2:";
+cin.getline(s2,100);
+int lengths1=0,lengths2=0;
+while(s1[lengths1]!='\0')lengths1++;
+lengths1--;
+while(s2[lengths2]!='\0')lengths2++;
+lengths2--;
+int i;
+for(i=lengths1-lengths2;i>=0;i--){
+if (s1[i]==s2[0]){
+int j;
+for(j=1;j<lengths2;j++){
+if (s1[i+j]!=s2[j]){
+break;
+}
+}
+if (j==lengths2){
+cout<<"Chuoi con xuat hien trong chuoi hien tai o vi
+tri:"<<i+1;
+break;
+}
+}
+}
+if (i==-1){
+cout<<"Khong tim thay chuoi con trong chuoi hien tai";
+}
+}
