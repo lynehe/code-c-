@@ -1,0 +1,58 @@
+1.
+#include<iostream.h>
+using namespace std;
+int main(){
+cout<<"Nhap a, n (a, n >0):";
+long int a,n,lt;
+cin>>a>>n;
+lt=1;
+for(long int i=1;i<=n;i++){
+lt=lt*a;
+}
+cout<<"a^n="<<lt;
+return 0
+}
+
+2..
+#include <iostream.h>
+int main()
+{
+int num;
+do{
+cout<<"Hay nhap vao mot nguyen duong de kiem tra:";
+cin>>num;}while(num<=0);
+for(int i=2; i<num/2; i++){
+if(num%i==0){
+cout<<num<<" khong phai la so nguyen to.\n";
+return 0;
+}
+}
+cout<<num<<" la so nguyen to\n";
+
+3..
+#include<iostream.h>
+#include<math.h>
+using namespace std;
+int main(){
+cout<<"Nhap n (>0):";
+long int n;
+float s;
+cin>>n;
+s=1;
+for(long int i=1;i<=n;i++){
+s=s+pow(-1,i)/(i*(i+1));}
+cout<<"Tong s="<<s;
+return 0}
+
+4..
+#include<iostream.h>
+using namespace std;
+int main(){
+float n,minval=0;
+int count=0;
+do{
+cout<<"Nhap so thuc:";
+cin>>n;
+count++;
+minval=minval>n?n:minval;
+}while (n!=0);
